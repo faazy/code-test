@@ -36,3 +36,54 @@ Run PHP Development Sever
 ```
 php artisan serve
 ```
+
+### Testing API
+
+``
+http://127.0.0.1:8000/api/bet [Post method]
+``
+
+##### Request Body
+```
+{
+    "player_id": 1,
+    "stake_amount": 99.99,
+    "selections": [
+        {
+            "id": 1,
+            "odds": 100
+        },
+        {
+            "id": 2,
+            "odds": 2
+        }
+    ]
+}
+```
+##### Error Response
+
+```
+{
+    "errors": [
+        {
+            "code": 9,
+            "message": "Maximum win amount is 20000"
+        },
+        {
+            "code": 11,
+            "message": "Insufficient balance"
+        }
+    ],
+    "selections": [
+        {
+            "id": 1,
+            "errors": [
+                {
+                    "code": 7,
+                    "message": "Maximum odds are 10000"
+                }
+            ]
+        }
+    ]
+}
+```
