@@ -15,6 +15,9 @@ class CreateBalanceTransactionsTable extends Migration
     {
         Schema::create('balance_transactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('player_id');
+            $table->decimal('amount');
+            $table->decimal('amount_before')->nullable();
             $table->timestamps();
         });
     }

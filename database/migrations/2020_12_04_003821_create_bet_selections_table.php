@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBetsTable extends Migration
+class CreateBetSelectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateBetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bets', function (Blueprint $table) {
+        Schema::create('bet_selections', function (Blueprint $table) {
             $table->id();
-            $table->decimal('stake_amount', 15);
-            $table->timestamps();
+            $table->unsignedBigInteger('bet_id');
+            $table->unsignedBigInteger('selection_id');
+            $table->double('odds', 7, 3);
+
         });
     }
 
@@ -27,6 +29,6 @@ class CreateBetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bets');
+        Schema::dropIfExists('bet_selections');
     }
 }

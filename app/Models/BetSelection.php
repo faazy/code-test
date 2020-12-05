@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BalanceTransaction extends Model
+class BetSelection extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['player_id', 'amount', 'amount_before'];
+    protected $fillable = ['bet_id', 'selection_id', 'odds'];
+
+    public $timestamps = false;
 }
